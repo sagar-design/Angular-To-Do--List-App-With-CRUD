@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <h2 class="mb-4">To-Do List</h2>
+  <div class="input-group mb-3">
+    <input [(ngModel)]="newTask" class="form-control" placeholder="Add a new task" />
+    <div class="input-group-append">
+      <button (click)="addTask()" class="btn btn-primary">Add</button>
+    </div>
+  </div>
+
+  <ul class="list-group mb-4">
+    <li *ngFor="let task of tasks; let i = index" class="list-group-item d-flex justify-content-between align-items-center">
+      <label>
+        <input type="checkbox" [(ngModel)]="task.done" />
+        <span [class.done]="task.done">{{ task.description }}</span>
+      </label>
+      <div>
+        <button (click)="editTask(i)" class="btn btn-warning btn-sm ml-2">Edit</button>
+        <button (click)="deleteTask(i)" class="btn btn-danger btn-sm ml-2">Delete</button>
+      </div>
+    </li>
+  </ul>
+
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.description }}</td>
+        <td>{{ task.done ? 'Completed' : 'Incomplete' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container mt-5">
+  <footer class="text-center mt-auto py-3">
+    &copy; 2024 SS
+  </footer>
+</div>
